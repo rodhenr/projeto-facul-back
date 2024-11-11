@@ -16,15 +16,15 @@ public class AuthController : BaseController
 
     [AllowAnonymous]
     [HttpPost("cadastro")]
-    public async Task CadastrarUsuario(UsuarioCadastro dados)
+    public async Task CadastrarUsuario([FromBody] UsuarioCadastro dados)
     {
         await _authService.Registrar(dados);
     }
 
     [AllowAnonymous]
-    [HttpGet("login")]
-    public async Task Login(UsuarioLogin dados)
+    [HttpPost("login")]
+    public async Task<AutenticacaoResponse> Login([FromBody] UsuarioLogin dados)
     {
-        await _authService.Login(dados);
+        return await _authService.Login(dados);
     }
 }
