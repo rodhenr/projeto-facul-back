@@ -74,7 +74,7 @@ public static class DependencyInjectionExtensions
             .AddJwtBearer(options =>
             {
                 options.Audience = audience;
-                options.TokenValidationParameters = new TokenValidationParameters()
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidIssuer = issuer,

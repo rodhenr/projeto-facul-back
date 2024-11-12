@@ -13,15 +13,24 @@ public class ProdutoController : BaseController
         _produtoService = produtoService;
     }
 
-    [HttpGet("")]
-    public async Task<List<Produto>> BuscarProdutos()
+    [AllowAnonymous]
+    [HttpGet]
+    public async Task<List<Produto>> BuscarProdutosPorFiltro(string filtro)
     {
-        return [];
+        return await _produtoService.BuscarPorFiltro(filtro);
     }
     
+    [AllowAnonymous]
     [HttpGet("{produtoId:int}")]
     public async Task<Produto> BuscarProdutoPorId(int produtoId)
     {
         return await _produtoService.BuscarPorId(produtoId);
+    }
+    
+    [AllowAnonymous]
+    [HttpGet("destaque")]
+    public async Task<List<Produto>> BuscarProdutosEmDestaque()
+    {
+        return await _produtoService.BuscarPorDestaque();
     }
 }

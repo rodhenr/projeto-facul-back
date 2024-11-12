@@ -13,12 +13,36 @@ public class ProdutoService
     {
         _context = context;
     }
+    
+    public async Task<List<Produto>> BuscarPorFiltro(string filtro)
+    {
+        return await _context.Produtos
+            .AsNoTracking()
+            .Where(x => x.Nome.Contains(filtro))
+            .ToListAsync();
+    }
 
     public async Task<Produto> BuscarPorId(int id)
     {
-        var testes = await _context.Produtos.ToListAsync();
         return await _context.Produtos
              .Where(x => x.Id == id)
              .FirstOrDefaultAsync() ?? throw new EntityNotFoundException($"Nenhum produto encontrado para o Id `{id}`");
+    }
+    
+    public async Task<List<Produto>> BuscarPorDestaque()
+    {
+        return await _context.Produtos
+            .AsNoTracking()
+            .Take(8)
+            .ToListAsync();
+    }
+
+    public async Task<List<Produto>> BuscarProdutosPorCategoria(int categoriaId)
+    {
+        return await _context.ProdutoCategorias
+            .AsNoTracking()
+            .Where(x => x.CategoriaId == categoriaId)
+            .Select(x => x.Produto)
+            .ToListAsync();
     }
 }

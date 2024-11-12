@@ -26,6 +26,7 @@
         <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.2.0" />
         <PackageReference Include="Oracle.EntityFrameworkCore" Version="8.23.60" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.0" />
     </ItemGroup>
 
     <ItemGroup>

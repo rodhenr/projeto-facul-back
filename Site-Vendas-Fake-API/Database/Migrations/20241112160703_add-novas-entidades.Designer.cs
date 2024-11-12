@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 using Site_Vendas_Fake_API.Database;
@@ -11,9 +12,11 @@ using Site_Vendas_Fake_API.Database;
 namespace Site_Vendas_Fake_API.Database.Migrations
 {
     [DbContext(typeof(AppDbContextIdentity))]
-    partial class AppDbContextIdentityModelSnapshot : ModelSnapshot
+    [Migration("20241112160703_add-novas-entidades")]
+    partial class addnovasentidades
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -191,10 +194,6 @@ namespace Site_Vendas_Fake_API.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PedidoId");
-
-                    b.HasIndex("ProdutoId");
-
                     b.ToTable("ItemPedidos");
                 });
 
@@ -261,10 +260,6 @@ namespace Site_Vendas_Fake_API.Database.Migrations
                         .HasColumnType("NUMBER(10)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoriaId");
-
-                    b.HasIndex("ProdutoId");
 
                     b.ToTable("ProdutoCategorias");
                 });
@@ -383,61 +378,6 @@ namespace Site_Vendas_Fake_API.Database.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Site_Vendas_Fake_API.Entidades.ItemPedido", b =>
-                {
-                    b.HasOne("Site_Vendas_Fake_API.Entidades.Pedido", "Pedido")
-                        .WithMany("ItemPedidos")
-                        .HasForeignKey("PedidoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Site_Vendas_Fake_API.Entidades.Produto", "Produto")
-                        .WithMany("ItemPedidos")
-                        .HasForeignKey("ProdutoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Pedido");
-
-                    b.Navigation("Produto");
-                });
-
-            modelBuilder.Entity("Site_Vendas_Fake_API.Entidades.ProdutoCategoria", b =>
-                {
-                    b.HasOne("Site_Vendas_Fake_API.Entidades.Categoria", "Categoria")
-                        .WithMany("ProdutoCategorias")
-                        .HasForeignKey("CategoriaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Site_Vendas_Fake_API.Entidades.Produto", "Produto")
-                        .WithMany("ProdutoCategorias")
-                        .HasForeignKey("ProdutoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Categoria");
-
-                    b.Navigation("Produto");
-                });
-
-            modelBuilder.Entity("Site_Vendas_Fake_API.Entidades.Categoria", b =>
-                {
-                    b.Navigation("ProdutoCategorias");
-                });
-
-            modelBuilder.Entity("Site_Vendas_Fake_API.Entidades.Pedido", b =>
-                {
-                    b.Navigation("ItemPedidos");
-                });
-
-            modelBuilder.Entity("Site_Vendas_Fake_API.Entidades.Produto", b =>
-                {
-                    b.Navigation("ItemPedidos");
-
-                    b.Navigation("ProdutoCategorias");
                 });
 #pragma warning restore 612, 618
         }
