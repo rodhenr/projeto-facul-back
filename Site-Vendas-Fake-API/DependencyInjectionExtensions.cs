@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Site_Vendas_Fake_API.Database;
 using Site_Vendas_Fake_API.Models;
+using Site_Vendas_Fake_API.Entidades;
 
 namespace Site_Vendas_Fake_API;
 

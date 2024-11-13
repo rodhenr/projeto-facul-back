@@ -16,10 +16,11 @@ public class ProdutoService
     
     public async Task<List<Produto>> BuscarPorFiltro(string filtro)
     {
-        return await _context.Produtos
-            .AsNoTracking()
-            .Where(x => x.Nome.Contains(filtro))
+        var prods = await _context.Produtos
+            .Where(x => EF.Functions.Like(x.Nome.ToLower(), $"%{filtro.ToLower()}%"))
             .ToListAsync();
+
+        return prods;
     }
 
     public async Task<Produto> BuscarPorId(int id)

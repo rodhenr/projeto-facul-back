@@ -8,10 +8,13 @@ namespace Site_Vendas_Fake_API.Database;
 public class AppDbContextIdentity(DbContextOptions<AppDbContextIdentity> options) : IdentityDbContext<AppUser>(options)
 {
     public DbSet<Categoria> Categorias { get; set; }
+    
     public DbSet<ItemPedido> ItemPedidos { get; set; }
     public DbSet<Pedido> Pedidos { get; set; }
     public DbSet<Produto> Produtos { get; set; }
     public DbSet<ProdutoCategoria> ProdutoCategorias { get; set; }
+    
+    public DbSet<UsuarioEndereco> UsuarioEnderecos { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

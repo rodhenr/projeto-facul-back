@@ -27,6 +27,7 @@ builder.Services.AddScoped<ProdutoService>();
 builder.Services.AddScoped<CategoriaService>();
 builder.Services.AddScoped<PedidoService>();
 builder.Services.AddScoped<CurrentUserAccessor>();
+builder.Services.AddScoped<UsuarioService>();
 
 var app = builder.Build();
 

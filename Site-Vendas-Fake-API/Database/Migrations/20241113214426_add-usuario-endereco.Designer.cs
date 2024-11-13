@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 using Site_Vendas_Fake_API.Database;
@@ -11,9 +12,11 @@ using Site_Vendas_Fake_API.Database;
 namespace Site_Vendas_Fake_API.Database.Migrations
 {
     [DbContext(typeof(AppDbContextIdentity))]
-    partial class AppDbContextIdentityModelSnapshot : ModelSnapshot
+    [Migration("20241113214426_add-usuario-endereco")]
+    partial class addusuarioendereco
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -351,7 +354,7 @@ namespace Site_Vendas_Fake_API.Database.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("NVARCHAR2(50)");
 
-                    b.Property<string>("Cep")
+                    b.Property<string>("CEP")
                         .IsRequired()
                         .HasMaxLength(8)
                         .HasColumnType("NVARCHAR2(8)");
@@ -371,7 +374,7 @@ namespace Site_Vendas_Fake_API.Database.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("NVARCHAR2(200)");
 
-                    b.Property<string>("Uf")
+                    b.Property<string>("UF")
                         .IsRequired()
                         .HasMaxLength(2)
                         .HasColumnType("NVARCHAR2(2)");

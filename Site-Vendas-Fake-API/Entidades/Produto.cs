@@ -14,6 +14,8 @@ public class Produto
     
     public decimal Preco { get; set; }
     
+    public required string UrlImagem { get; set; }
+    
     [InverseProperty("Produto")]
     public virtual ICollection<ProdutoCategoria> ProdutoCategorias { get; set; } = new List<ProdutoCategoria>();
     
