@@ -11,6 +11,7 @@ public class AppDbContextIdentity(DbContextOptions<AppDbContextIdentity> options
     
     public DbSet<ItemPedido> ItemPedidos { get; set; }
     public DbSet<Pedido> Pedidos { get; set; }
+    public DbSet<PedidoPagamento> PedidoPagamentos { get; set; }
     public DbSet<Produto> Produtos { get; set; }
     public DbSet<ProdutoCategoria> ProdutoCategorias { get; set; }
     

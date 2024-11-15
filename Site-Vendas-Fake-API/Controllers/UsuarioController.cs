@@ -32,9 +32,24 @@ public class UsuarioController : BaseController
     }
     
     [Authorize]
+    [HttpPut("enderecos")]
+    public async Task AtualizarEndereco([FromBody] UsuarioEnderecoRequest dados)
+    {
+        await _usuarioService.AtualizarEndereco(dados);
+    }
+    
+    [Authorize]
     [HttpGet("pedidos")]
     public async Task<List<PedidoDto>> BuscarPedidos()
     {
         return await _pedidoService.BuscarPedidos();
     }
+    
+    [Authorize]
+    [HttpPost("pedidos")]
+    public async Task SalvarPedido([FromBody] UsuarioPedidoRequest dados)
+    {
+        await _pedidoService.SalvarPedido(dados);
+    }
+    
 }

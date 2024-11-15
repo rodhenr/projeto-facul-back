@@ -19,7 +19,7 @@ public class RegisterUserValidator : AbstractValidator<UsuarioCadastro>
 {
     public RegisterUserValidator()
     {
-        RuleFor(x => x.Usuario)            
+        RuleFor(x => x.Nome)            
             .NotEmpty().WithMessage("O campo {PropertyName} não pode estar vazio.")
             .Length(3, 20).WithMessage("O campo {PropertyName} deve ter entre {MinLength} e {MaxLength} caracteres.")
             .Must(username => !username.Any(char.IsWhiteSpace)).WithMessage("O campo {PropertyName} não pode conter espaços.");

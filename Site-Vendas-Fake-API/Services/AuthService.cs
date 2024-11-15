@@ -49,7 +49,7 @@ public class AuthService : IAuthService
         
         var appUser = new AppUser
         {
-            UserName = dados.Usuario,
+            UserName = dados.Email,
             Email = dados.Email,
             EmailConfirmed = true
         };

@@ -21,7 +21,6 @@ public class UsuarioService
         var usuarioId = _currentUserAccessor.UserId;
         
         return await _context.UsuarioEnderecos
-            .AsNoTracking()
             .Where(x => x.UsuarioId == usuarioId)
             .FirstOrDefaultAsync();
     }
@@ -46,6 +45,20 @@ public class UsuarioService
         };
 
         _context.UsuarioEnderecos.Add(endereco);
+        await _context.SaveChangesAsync();
+    }
+    
+    public async Task AtualizarEndereco(UsuarioEnderecoRequest dados)
+    {
+        var enderecoUsuario = await BuscarEndereco() ?? throw new Exception("Nenhum endereço encontrado.");
+
+        enderecoUsuario.Rua = dados.Rua;
+        enderecoUsuario.Cidade = dados.Cidade;
+        enderecoUsuario.Bairro = dados.Bairro;
+        enderecoUsuario.Numero = dados.Numero;
+        enderecoUsuario.Uf = dados.Uf;
+        enderecoUsuario.Cep = dados.Cep;
+
         await _context.SaveChangesAsync();
     }
 }

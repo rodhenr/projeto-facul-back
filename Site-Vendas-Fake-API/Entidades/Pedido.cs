@@ -8,11 +8,13 @@ public class Pedido
     [Key]
     public int Id { get; set; }
     
+    public DateTime Data { get; set; }
     public required string UsuarioId { get; set; }
+    public required string SituacaoPedido { get; set; }
+    public decimal TaxaEntrega { get; set; }
     
-    public required string Status { get; set; }
-    
-    public decimal PrecoTotal { get; set; }
+    [InverseProperty("Pedido")]
+    public virtual PedidoPagamento PedidoPagamento { get; set; } = null!;
     
     [InverseProperty("Pedido")]
     public virtual ICollection<ItemPedido> ItemPedidos { get; set; } = new List<ItemPedido>();
