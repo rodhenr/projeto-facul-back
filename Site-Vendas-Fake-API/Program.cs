@@ -7,13 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Built-in Services
 builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddHttpClient();
-builder.Services.AddCors(
-    opt => opt.AddPolicy(name: "Front", 
-    policy =>
-    {
-        policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
-    }
-));
 
 // Custom Services
 builder.Services.AddCustomServices(builder.Configuration);
@@ -37,7 +30,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors("Front");
+
+app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

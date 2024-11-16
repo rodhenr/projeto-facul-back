@@ -6,6 +6,7 @@ namespace Site_Vendas_Fake_API.Entidades;
 public class ProdutoCategoria
 {
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
     
     public int ProdutoId { get; set; }

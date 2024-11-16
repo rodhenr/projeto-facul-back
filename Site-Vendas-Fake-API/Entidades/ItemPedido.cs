@@ -6,6 +6,7 @@ namespace Site_Vendas_Fake_API.Entidades;
 public class ItemPedido
 {
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
     
     public int PedidoId { get; set; }

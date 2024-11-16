@@ -63,7 +63,7 @@ public class PedidoService
         var pedido = new Pedido
         {
             UsuarioId = usuarioId,
-            Data = DateTime.Now,
+            Data = DateTime.Now.ToUniversalTime(),
             SituacaoPedido = "Em Análise",
             TaxaEntrega = dados.TaxaEntrega
         };

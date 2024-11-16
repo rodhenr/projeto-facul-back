@@ -35,6 +35,7 @@ public class UsuarioService
 
         var endereco = new UsuarioEndereco
         {
+            Id = 0,
             UsuarioId = usuarioId,
             Rua = dados.Rua,
             Cidade = dados.Cidade,

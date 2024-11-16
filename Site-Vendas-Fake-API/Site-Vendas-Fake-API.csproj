@@ -24,7 +24,7 @@
         </PackageReference>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
         <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.2.0" />
-        <PackageReference Include="Oracle.EntityFrameworkCore" Version="8.23.60" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.10" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.0" />
     </ItemGroup>

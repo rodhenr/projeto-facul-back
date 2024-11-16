@@ -25,7 +25,7 @@ public static class DependencyInjectionExtensions
     private static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<AppDbContextIdentity>(options => 
-            options.UseOracle(configuration.GetConnectionString("DefaultConnection"), 
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"), 
                 b => b.MigrationsAssembly(typeof(AppDbContextIdentity).Assembly.FullName)));
 
         services.AddIdentity<AppUser, IdentityRole>()

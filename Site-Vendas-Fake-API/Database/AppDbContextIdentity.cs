@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Site_Vendas_Fake_API.Entidades;
-using Site_Vendas_Fake_API.Models;
 
 namespace Site_Vendas_Fake_API.Database;
 
@@ -21,20 +20,29 @@ public class AppDbContextIdentity(DbContextOptions<AppDbContextIdentity> options
     {
         base.OnModelCreating(modelBuilder);
         
-        modelBuilder.Entity<AppUser>(entity =>
-        {
-            entity.Property(e => e.EmailConfirmed)
-                .HasColumnType("NUMBER(1)");
-
-            entity.Property(e => e.PhoneNumberConfirmed)
-                .HasColumnType("NUMBER(1)");
-
-            entity.Property(e => e.LockoutEnabled)
-                .HasColumnType("NUMBER(1)");
-
-            entity.Property(e => e.TwoFactorEnabled)
-                .HasColumnType("NUMBER(1)");
-        });
+        modelBuilder.Entity<Categoria>()
+            .Property(p => p.Id)
+            .ValueGeneratedOnAdd();
+        
+        modelBuilder.Entity<ItemPedido>()
+            .Property(p => p.Id)
+            .ValueGeneratedOnAdd();
+        
+        modelBuilder.Entity<PedidoPagamento>()
+            .Property(p => p.Id)
+            .ValueGeneratedOnAdd();
+        
+        modelBuilder.Entity<Produto>()
+            .Property(p => p.Id)
+            .ValueGeneratedOnAdd();
+        
+        modelBuilder.Entity<ProdutoCategoria>()
+            .Property(p => p.Id)
+            .ValueGeneratedOnAdd();
+        
+        modelBuilder.Entity<UsuarioEndereco>()
+            .Property(p => p.Id)
+            .ValueGeneratedOnAdd();
         
         modelBuilder.Entity<ItemPedido>()
             .HasOne(x => x.Pedido)
